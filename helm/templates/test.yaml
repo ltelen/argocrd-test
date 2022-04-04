@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: test-app 
+  name: test  
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -11,10 +11,9 @@ spec:
     path: helm
     repoURL: https://github.com/ltelen/test-app.git
     targetRevision: HEAD
-    api:
+    helm:
       values: |
-        image: 
-          tag: latest
+        imageVersion: 1.21.6
   destination:
     namespace: test
     server: https://kubernetes.default.svc
