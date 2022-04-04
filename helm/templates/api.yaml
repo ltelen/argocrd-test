@@ -1,0 +1,23 @@
+  apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    name: api  
+    namespace: argocd
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
+  spec:
+    project: default 
+    source: 
+      path: bplatform-backend/api
+      repoURL: https://gitlab.com/aleacontrol/deploy_config/helm-charts.git
+      targetRevision: HEAD
+      helm:
+        values: |
+          imageVersion: latest
+    destination:
+      namespace: test
+      server: https://kubernetes.default.svc
+    syncPolicy: 
+      automated: 
+        selfHeal: true
+        prune:  true
