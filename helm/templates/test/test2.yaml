@@ -13,7 +13,7 @@
       targetRevision: HEAD
       helm:
         values: |
-          imageVersion: 1.26.1
+          imageVersion: 1.21.6
     destination:
       namespace: test
       server: https://kubernetes.default.svc
